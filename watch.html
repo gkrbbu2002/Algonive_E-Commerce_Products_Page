@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrono Watch - Cyber Smartwatch | Zivio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Quantum Network Background Canvas -->
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <header>
+            <a href="index.html" class="brand" id="brand-logo">
+                <i class="ri-pulse-line"></i> Zivio
+            </a>
+            <nav class="nav-links">
+                <a href="#product-details" class="nav-pill active"><i class="ri-store-2-line"></i> Store</a>
+                <a href="#product-specs" class="nav-pill"><i class="ri-list-settings-line"></i> Specifications</a>
+                <a href="#customer-reviews" class="nav-pill"><i class="ri-chat-voice-line"></i> Reviews</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-icon-btn" id="cart-trigger-btn" aria-label="Open Shopping Cart">
+                    <i class="ri-shopping-bag-3-line"></i>
+                    <span class="cart-badge" id="cart-count-badge" style="display: none;">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Product Section -->
+        <main class="product-grid" id="product-details">
+            <!-- Left Column: Interactive Gallery -->
+            <section class="gallery-container">
+                <div class="main-image-viewport glass-panel" id="main-viewport">
+                    <img id="main-product-image" src="images/product_watch.png" alt="Chrono Watch">
+                </div>
+                <div class="thumbnails-strip" id="thumbnails-strip">
+                    <div class="thumbnail-card active"><img src="images/product_watch.png" alt="Thumbnail View"></div>
+                    <div class="thumbnail-card"><img src="images/product_watch.png" style="transform: scale(1.6) rotate(12deg);" alt="Thumbnail View"></div>
+                </div>
+            </section>
+
+            <!-- Right Column: Details & Actions -->
+            <section class="details-container glass-panel">
+                <div class="badge-new">New Release</div>
+                <h1 class="product-title">Chrono Watch</h1>
+                <p style="color: var(--primary); font-weight: 600; font-size: 1.2rem; margin-top: -15px;">Holographic Interface Cyber Chrono</p>
+                
+                <div class="rating-summary" id="overall-rating-text">
+                    <i class="ri-star-fill" style="color:var(--gold);"></i>
+                    <i class="ri-star-fill" style="color:var(--gold);"></i>
+                    <i class="ri-star-fill" style="color:var(--gold);"></i>
+                    <i class="ri-star-fill" style="color:var(--gold);"></i>
+                    <i class="ri-star-fill" style="color:var(--gold);"></i>
+                    <span class="rating-text">(1 Review)</span>
+                </div>
+
+                <div class="price-row">
+                    <span class="current-price" id="current-price">$279.99</span>
+                    <span class="original-price" id="original-price">$329.99</span>
+                    <span class="discount-badge">Save 15%</span>
+                </div>
+
+                <p class="product-short-desc">
+                    The ultimate survival and fitness smartwatch featuring a futuristic holographic watch face. Monitored by advanced AI biosensors in a carbon fiber shockproof body.
+                </p>
+
+                <!-- Color Options Selection -->
+                <div class="option-group">
+                    <span class="option-title">Select Color</span>
+                    <div class="color-options" id="color-options-container">
+                        <button class="color-btn active" data-color="cyber_black">
+                            <span class="color-dot" style="background: #1a1a1a; box-shadow: 0 0 8px #1a1a1a;"></span> Cyber Black
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Size/Edition Options Selection -->
+                <div class="option-group">
+                    <span class="option-title">Select Edition</span>
+                    <div class="size-options" id="size-options-container">
+                        <button class="size-btn active" data-size="Stealth Band">Stealth Band</button>
+                        <button class="size-btn" data-size="Carbon Deluxe">Carbon Fiber Deluxe</button>
+                        <button class="size-btn" data-size="Sport Mesh">Sport Mesh</button>
+                    </div>
+                </div>
+
+                <!-- Purchase Controls -->
+                <div class="purchase-section">
+                    <div class="quantity-selector">
+                        <button class="qty-btn" id="qty-minus" aria-label="Decrease Quantity">-</button>
+                        <input type="number" class="qty-input" id="qty-value" value="1" min="1" readonly>
+                        <button class="qty-btn" id="qty-plus" aria-label="Increase Quantity">+</button>
+                    </div>
+                    <button class="btn-airflow" id="btn-add-cart">
+                        <i class="ri-shopping-cart-2-line"></i> Add to Cart
+                    </button>
+                    <button class="btn-airflow btn-buy" id="btn-buy-now">
+                        Buy Now <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+
+                <!-- Product Specifications Accordions -->
+                <div class="specs-section" id="product-specs-container">
+                    <div class="accordion-item active">
+                        <div class="accordion-header">
+                            <span>Key Specifications</span>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li><span>Case Material</span> <span>Carbon Fiber & Titanium Alloy</span></li>
+                                <li><span>Display Technology</span> <span>1.43" AMOLED Holographic Screen</span></li>
+                                <li><span>Water Rating</span> <span>IP68 & 10ATM Waterproofing</span></li>
+                                <li><span>Health Biosensors</span> <span>ECG, SpO2, HRV, Auto-Sleep tracker</span></li>
+                                <li><span>Battery Standby</span> <span>Up to 14 Days</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>What's In The Box</span>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Every Chrono Watch package includes:</p>
+                            <ul style="margin-top: 8px;">
+                                <li>• Chrono Smartwatch</li>
+                                <li>• Carbon Fiber Strap</li>
+                                <li>• Magnetic Charging Dock</li>
+                                <li>• User Guide Manual</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Related Products Section -->
+        <section class="related-products-section glass-panel" style="margin-bottom: 60px;">
+            <h2 style="font-size: 2rem; font-weight: 800; border-bottom: 1px solid var(--surface-border); padding-bottom: 15px; margin-bottom: 30px;">Explore More From Zivio</h2>
+            <div class="products-grid-shelf">
+                <!-- Product 1 -->
+                <div class="product-shelf-card" onclick="window.location.href='index.html'" style="cursor: pointer;">
+                    <div class="shelf-img-container">
+                        <img src="images/cyber_neon.png" alt="AeroPulse Headphones">
+                    </div>
+                    <h3>AeroPulse Headphones</h3>
+                    <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i> <span style="font-size:0.8rem; color:var(--text-muted);">(86)</span></div>
+                    <div class="shelf-price-row">
+                        <span class="shelf-price">$249.99</span>
+                        <button class="shelf-add-btn" onclick="event.stopPropagation(); addShelfItemToCart('AeroPulse', 249.99, 'images/cyber_neon.png', 'Cyber Neon')"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-shelf-card" onclick="window.location.href='ring.html'" style="cursor: pointer;">
+                    <div class="shelf-img-container">
+                        <img src="images/product_ring.png" alt="Aura Smart Ring">
+                    </div>
+                    <h3>Aura Smart Ring</h3>
+                    <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i> <span style="font-size:0.8rem; color:var(--text-muted);">(42)</span></div>
+                    <div class="shelf-price-row">
+                        <span class="shelf-price">$199.99</span>
+                        <button class="shelf-add-btn" onclick="event.stopPropagation(); addShelfItemToCart('Aura Smart Ring', 199.99, 'images/product_ring.png', 'Silver')"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-shelf-card" onclick="window.location.href='glasses.html'" style="cursor: pointer;">
+                    <div class="shelf-img-container">
+                        <img src="images/product_glasses.png" alt="NovaVR Smart Glasses">
+                    </div>
+                    <h3>NovaVR Glasses</h3>
+                    <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i> <span style="font-size:0.8rem; color:var(--text-muted);">(29)</span></div>
+                    <div class="shelf-price-row">
+                        <span class="shelf-price">$349.99</span>
+                        <button class="shelf-add-btn" onclick="event.stopPropagation(); addShelfItemToCart('NovaVR Glasses', 349.99, 'images/product_glasses.png', 'Default')"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-shelf-card" onclick="window.location.href='earbuds.html'" style="cursor: pointer;">
+                    <div class="shelf-img-container">
+                        <img src="images/product_earbuds.png" alt="Aether Pods">
+                    </div>
+                    <h3>Aether Pods</h3>
+                    <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i> <span style="font-size:0.8rem; color:var(--text-muted);">(114)</span></div>
+                    <div class="shelf-price-row">
+                        <span class="shelf-price">$129.99</span>
+                        <button class="shelf-add-btn" onclick="event.stopPropagation(); addShelfItemToCart('Aether Pods', 129.99, 'images/product_earbuds.png', 'Gold')"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-shelf-card" onclick="window.location.href='speaker.html'" style="cursor: pointer;">
+                    <div class="shelf-img-container">
+                        <img src="images/product_speaker.png" alt="Prism Speaker">
+                    </div>
+                    <h3>Prism Speaker</h3>
+                    <div class="stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i> <span style="font-size:0.8rem; color:var(--text-muted);">(56)</span></div>
+                    <div class="shelf-price-row">
+                        <span class="shelf-price">$179.99</span>
+                        <button class="shelf-add-btn" onclick="event.stopPropagation(); addShelfItemToCart('Prism Speaker', 179.99, 'images/product_speaker.png', 'RGB Edition')"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="reviews-section glass-panel" id="customer-reviews">
+            <h2 style="font-size: 2rem; font-weight: 800; border-bottom: 1px solid var(--surface-border); padding-bottom: 15px;">Customer Reviews</h2>
+            <div class="reviews-grid">
+                <!-- Left stats panel -->
+                <div class="reviews-stats-card">
+                    <div style="display: flex; align-items: baseline; gap: 15px;">
+                        <span class="average-rating-num" id="avg-rating-value">5.0</span>
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="stars" id="avg-rating-stars">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                            <span class="rating-text" id="total-reviews-count">Based on 1 Review</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress bars -->
+                    <div class="rating-bar-container">
+                        <div class="rating-bar-row">
+                            <span>5</span> <i class="ri-star-fill" style="color:var(--gold);"></i>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-fill" id="rating-bar-fill-5" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>4</span> <i class="ri-star-fill" style="color:var(--gold);"></i>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-fill" id="rating-bar-fill-4" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>3</span> <i class="ri-star-fill" style="color:var(--gold);"></i>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-fill" id="rating-bar-fill-3" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>2</span> <i class="ri-star-fill" style="color:var(--gold);"></i>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-fill" id="rating-bar-fill-2" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>1</span> <i class="ri-star-fill" style="color:var(--gold);"></i>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-fill" id="rating-bar-fill-1" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn-airflow btn-write-review" id="btn-write-review">
+                        <i class="ri-edit-line"></i> Write a Review
+                    </button>
+                </div>
+
+                <!-- Right reviews list & filter -->
+                <div class="reviews-list-container">
+                    <div class="reviews-filter-bar">
+                        <div class="reviews-filter-tabs">
+                            <button class="filter-tab active" data-filter="all">All Reviews</button>
+                            <button class="filter-tab" data-filter="5">5 Stars</button>
+                            <button class="filter-tab" data-filter="4">4 Stars</button>
+                            <button class="filter-tab" data-filter="3">3 Stars</button>
+                        </div>
+                    </div>
+                    <div id="reviews-list" style="display: flex; flex-direction: column; gap: 20px;">
+                        <!-- Dynamic reviews items render here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sliding Cart Drawer Panel -->
+    <div class="cart-drawer-overlay" id="cart-overlay">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <button class="cart-close-btn" id="cart-close" aria-label="Close Cart">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            <div class="cart-items-list" id="cart-items-list">
+                <!-- Cart items list dynamically rendered here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="cart-summary-row total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn-airflow btn-buy" style="width: 100%; margin-top: 10px;" onclick="alert('Checkout integration simulated successfully!')">
+                    Secure Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Submission Form Modal -->
+    <div class="modal-overlay" id="review-modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Write your review</h3>
+                <button class="modal-close" id="close-review-modal">&times;</button>
+            </div>
+            <form id="review-form">
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating-select-container">
+                        <i class="ri-star-fill rating-star-option selected" data-value="1"></i>
+                        <i class="ri-star-fill rating-star-option selected" data-value="2"></i>
+                        <i class="ri-star-fill rating-star-option selected" data-value="3"></i>
+                        <i class="ri-star-fill rating-star-option selected" data-value="4"></i>
+                        <i class="ri-star-fill rating-star-option selected" data-value="5"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review-author">Your Name</label>
+                    <input type="text" id="review-author" class="form-control" placeholder="Aman Verma" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-content">Review Description</label>
+                    <textarea id="review-content" class="form-control" placeholder="Write your feedback..." required></textarea>
+                </div>
+                <button type="submit" class="btn-airflow btn-buy" style="width: 100%; margin-top: 15px;">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Quantum Network Background Canvas script -->
+    <script>
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        let orbs = [];
+        const maxDist = 120;
+        let mouse = { x: null, y: null, radius: 150 };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.floor((width * height) / 14000);
+            for (let i = 0; i < Math.min(particleCount, 120); i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.8,
+                    vy: (Math.random() - 0.5) * 0.8,
+                    radius: Math.random() * 2.5 + 1.5,
+                    color: i % 2 === 0 ? '#00f0ff' : '#ff007f'
+                });
+            }
+
+            orbs = [];
+            for (let i = 0; i < 6; i++) {
+                orbs.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: 120 + Math.random() * 120,
+                    color: i % 2 === 0 ? 'rgba(0, 240, 255, 0.15)' : 'rgba(255, 0, 127, 0.12)',
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function drawQuantumNetwork() {
+            ctx.globalCompositeOperation = 'screen';
+            orbs.forEach(orb => {
+                const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.radius);
+                grad.addColorStop(0, orb.color);
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+                if (orb.x < 0 || orb.x > width) orb.vx *= -1;
+                if (orb.y < 0 || orb.y > height) orb.vy *= -1;
+            });
+
+            ctx.globalCompositeOperation = 'source-over';
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = p.x - mouse.x;
+                    const dy = p.y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        const force = (mouse.radius - dist) / mouse.radius;
+                        const angle = Math.atan2(dy, dx);
+                        p.x += Math.cos(angle) * force * 2;
+                        p.y += Math.sin(angle) * force * 2;
+                    }
+                }
+
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.25;
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+            bgGrad.addColorStop(0, '#04050b');
+            bgGrad.addColorStop(1, '#020204');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, width, height);
+            drawQuantumNetwork();
+            requestAnimationFrame(animate);
+        }
+
+        resize();
+        animate();
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            const title = document.querySelector('.product-title');
+            if (title) {
+                title.style.transform = `translate(${x * 12 - 6}px, ${y * 12 - 6}px)`;
+            }
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
